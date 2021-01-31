@@ -1,5 +1,9 @@
 # Tips
 
+## Comments
+The standard in the Solidity community is to use a format called natspec
+https://docs.soliditylang.org/en/develop/natspec-format.html
+
 ## Gas Fees
 Normally there's no benefit to using these sub-types because Solidity reserves 256 bits of storage regardless of the uint size. For example, using uint8 instead of uint (uint256) won't save you any gas.
 

@@ -1,8 +1,13 @@
 pragma solidity >=0.5.0 <0.9.0;
 
-import "./Ownable.sol";
+import "./open-zeppelin/Ownable.sol";
+import "./open-zeppelin/SafeMath.sol";
 
 contract ZombieFactory is Ownable {
+
+    using SafeMath for uint256;
+    using SafeMath16 for uint16;
+    using SafeMath32 for uint32;
 
     event NewZombie(uint zombieId, string name, uint dna);
 
@@ -25,9 +30,11 @@ contract ZombieFactory is Ownable {
     mapping (address => uint) ownerZombieCount;
 
     function _createZombie(string memory _name, uint _dna) internal {
+        // Note: We chose not to prevent the year 2038 problem... So don't need
+        // worry about overflows on readyTime. Our app is screwed in 2038 anyway ;)
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
         zombieToOwner[id] = msg.sender;
-        ownerZombieCount[msg.sender]++;
+        ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
         emit NewZombie(id, _name, _dna);
     }
 
