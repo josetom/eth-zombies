@@ -1,0 +1,16 @@
+{
+  "name": "truffle",
+  "version": "1.0.0",
+  "description": "Truffle https://www.trufflesuite.com/docs/truffle/quickstart",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
